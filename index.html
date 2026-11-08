@@ -633,6 +633,27 @@
         let cart = [];
         const formatCurrency = (amount) => '₦' + amount.toLocaleString('en-NG');
 
+          // 3. FORM QUOTE SUBMISSION TOAST LOGIC
+        function handleQuoteSubmit(event) {
+            event.preventDefault(); // Stop default browser reload
+            const form = event.target;
+            
+            // Show custom toast notification
+            const toast = document.getElementById('toast-notification');
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            
+            // Clear the form fields
+            form.reset();
+            
+            // Auto hide toast after 4.5 seconds
+            setTimeout(closeToast, 4500);
+        }
+
+        function closeToast() {
+            const toast = document.getElementById('toast-notification');
+            toast.classList.add('translate-y-32', 'opacity-0');
+        }
+
         // 3. E-COMMERCE CART LOGIC (With "Flying" Animation)
         function addWithAnimation(event, id, name, price, imgId) {
             // Update Data
